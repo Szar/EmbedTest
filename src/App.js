@@ -37,7 +37,6 @@ class App extends React.Component {
 	}
 	exampleLink(e){
 		var v = e.target.getAttribute('data-code')
-		console.log(v);
 		e.preventDefault();
 		this.setState({
 			value: v,
