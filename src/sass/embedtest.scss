@@ -1,0 +1,281 @@
+@import './variables';
+@import './ace';
+
+html,
+body {
+	height: 100%;
+}
+
+
+body {
+	font-family: "Roboto", sans-serif;
+	color: $color-text;
+	background-color: $background-light;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.55em;
+	margin: 0;
+}
+
+ul,
+li {
+	width: auto;
+}
+
+ul {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+li {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Source Code Pro", monospace;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.container {
+	position: relative;
+	display: block;
+	margin: auto;
+	width: 100%;
+	max-width: $width;
+	padding-left: $padding;
+	padding-right: $padding;
+	box-sizing: border-box;
+}
+
+.btn {
+	font-family: "Source Code Pro", monospace;
+	cursor: pointer;
+	display: inline-block;
+	width: auto;
+	position: relative;
+	line-height: 1.25;
+	padding: $padding*0.35 $padding*0.5;
+	border: 2px solid $color-primary;
+	color: $color-primary;
+	background: transparent;
+	font-weight: 700;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	-webkit-transition: all $transition-time ease-in-out;
+	-moz-transition: all $transition-time ease-in-out;
+	-o-transition: all $transition-time ease-in-out;
+	transition: all $transition-time ease-in-out;
+
+	@media(max-width: 768px) {
+		font-size: 1rem;
+		padding: $padding*0.3 $padding*0.4;
+	}
+
+	&.btn-alt {
+		color: #999;
+		border-color: #999;
+	}
+
+	&:hover,
+	:focus {
+		text-decoration: none;
+		color: $color-secondary;
+		border-color: $color-secondary;
+	}
+
+}
+
+
+#embed-test {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	padding-top: $padding*2;
+	padding-bottom: $padding*2;
+	color: #fff;
+
+
+	background: linear-gradient(323deg, $color-background, #18354b);
+	background-size: 400% 400%;
+	background-attachment: fixed;
+
+	-webkit-animation: AnimationName 23s ease infinite;
+	-moz-animation: AnimationName 23s ease infinite;
+	animation: AnimationName 23s ease infinite;
+
+	@-webkit-keyframes AnimationName {
+		0% {
+			background-position: 17% 0%
+		}
+
+		50% {
+			background-position: 84% 100%
+		}
+
+		100% {
+			background-position: 17% 0%
+		}
+	}
+
+	@-moz-keyframes AnimationName {
+		0% {
+			background-position: 17% 0%
+		}
+
+		50% {
+			background-position: 84% 100%
+		}
+
+		100% {
+			background-position: 17% 0%
+		}
+	}
+
+	@keyframes AnimationName {
+		0% {
+			background-position: 17% 0%
+		}
+
+		50% {
+			background-position: 84% 100%
+		}
+
+		100% {
+			background-position: 17% 0%
+		}
+	}
+
+
+
+	>div {
+		width: 100%;
+		display: block;
+	}
+
+	h1 {
+		display: block;
+		font-size: 3.5rem;
+		line-height: 1;
+		margin-top: 0;
+		margin-bottom: $padding;
+		font-weight: 700;
+
+		@media(max-width: 768px) {
+			font-size: 2.5rem;
+			letter-spacing: -0.03rem;
+		}
+
+		@media(max-width: 572px) {
+			font-size: 2rem;
+		}
+
+		@media(max-width: 490px) {
+			font-size: 1.75rem;
+		}
+
+		@media(max-width: 360px) {
+			font-size: 1.35rem;
+		}
+
+		span {
+			color: $color-primary;
+
+			@media(max-width: 572px) {
+				&:first-child {
+					margin-right: -10px;
+				}
+
+				&:last-child {
+					margin-left: -10px;
+				}
+			}
+		}
+
+	}
+
+	.btn {
+		margin-top: $padding;
+
+		&:last-child {
+			margin-left: $padding*0.5;
+			opacity: 0.5;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	#embed {
+		border: 1px solid rgba($color-background-secondary, 0.35);
+	}
+
+	border-bottom: 1px solid $color-background-secondary;
+
+}
+
+.content {
+	padding-top: $padding*2;
+	padding-bottom: $padding*0.5;
+	text-align: center;
+
+	h3 {
+		display: inline-block;
+		padding-bottom: $padding*0.2;
+		margin-top: 0;
+		padding-top: 0;
+		text-transform: uppercase;
+		border-bottom: 2px solid $color-primary;
+		margin-bottom: $padding*0.75;
+
+		@media(max-width: 572px) {
+			font-size: 1rem;
+		}
+	}
+
+	.footer {
+		margin-top: $padding*2;
+		font-size: 13px;
+		color: rgba($color-text, 0.5);
+	}
+
+	#examples {
+		.btn {
+
+			font-size: 0.75rem;
+			padding: $padding*0.2 $padding*0.3;
+			margin-left: $padding*0.25;
+			margin-right: $padding*0.25;
+			margin-bottom: $padding*0.25;
+
+			@media(max-width: 572px) {
+				font-size: 0.65rem;
+			}
+		}
+
+	}
+}
+
+
+#embed {
+	position: relative;
+	display: table;
+	margin: auto;
+
+	&.active {
+		margin-bottom: $padding;
+		border: 1px solid #f1f0f0;
+	}
+}
