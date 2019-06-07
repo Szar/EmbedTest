@@ -13,36 +13,42 @@ class App extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			value: '',
 			embed: null
 		}
-		this.submitCode = this.submitCode.bind(this);
+		this.value = ""
+		this.setEmbed = this.setEmbed.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.exampleLink = this.exampleLink.bind(this);
 	}
 	onChange(v) {
-		this.setState({
-			value: v,
-		});
+		this.value = v
 		return true;
 	}
-	
-	submitCode(e) {
-		if(this.state.value!=="") {
+
+	setEmbed(e=null,scrollup=false) {
+		if(this.value!=="") {
 			this.setState({
-				embed: this.state.value
+				embed: this.value
 			})
-			animateScroll.scrollTo(document.getElementById('embed').getBoundingClientRect().top);
+			setTimeout(function(){
+				window.scrollTo({
+					top: scrollup ? 0 : document.getElementById('embed').getBoundingClientRect().top,
+					behavior: 'smooth'
+					});
+			}, 500);
 		}
 	}
+
 	exampleLink(e){
 		var v = e.target.getAttribute('data-code')
 		e.preventDefault();
-		this.setState({
-			value: v,
-			embed: v
-		})
-		animateScroll.scrollTo(document.getElementById('embed-test').getBoundingClientRect().top);
+		this.value = v
+		this.setEmbed(null,true);
+	}
+	toggleDropdown(e) {
+		e.preventDefault();
+		e.target.closest('.dropdown').classList.toggle("active");
+		
 	}
 	render() {
 		return (
@@ -68,21 +74,24 @@ class App extends React.Component {
 								showPrintMargin={ false }
 								wrapEnabled={ true }
 								defaultValue=""
-								value={this.state.value}
+								value={this.value}
 							/>
-							<div className="btn btn" id="go" onClick={this.submitCode}>Test <i className="fa fa-magic"></i></div> 
-							<div className="btn btn-alt" onClick={e => animateScroll.scrollTo(document.getElementById('examples').getBoundingClientRect().top)}>Examples <i className="fa fa-chevron-down" ></i></div>
+							<div className="btns">
+								<div className="btn btn" id="go" onClick={this.setEmbed}>Test <i className="fa fa-magic"></i></div> 
+								<div className="dropdown">
+									<div className="btn btn-alt dropbtn" onClick={this.toggleDropdown}>Examples <i className="fa fa-chevron-down" ></i></div>
+									<div className="dropdown--content">
+										<div onClick={this.exampleLink} data-code={'<iframe src="http://fractlstaging.com/tools/interactive-templates/interactive-embed-dynamic/" width="100%" height="300px" style="display:table;max-width:100%;margin:auto;width:800px;" frameBorder="0" scrolling="no"></iframe>'}>Simple Iframe</div>
+										<div onClick={this.exampleLink} data-code={'<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}>Youtube Video</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className="content">
 					<div className="container">
 						<div id="embed" className={this.state.embed!==null?'active':''} dangerouslySetInnerHTML={{ __html: this.state.embed }}></div>
-						<h3>Example Embeds</h3> 
-						<div id="examples">
-							<div className="btn" onClick={this.exampleLink} data-code={'<iframe src="http://fractlstaging.com/tools/interactive-templates/interactive-embed-dynamic/" width="100%" height="300px" style="display:table;max-width:100%;margin:auto;width:800px;" frameBorder="0" scrolling="no"></iframe>'}>Iframe Example</div>
-							<div className="btn" onClick={this.exampleLink} data-code={'<div id="interactive"></div><script type="text/javascript" src="https://api.frac.tl/cdn/pym.noscroll.js"></script><script>new pym.Parent("interactive", "http://fractlstaging.com/tools/interactive-templates/interactive-embed-dynamic/", {});</script>'}>Dynamic Height Example</div>
-						</div>
 						<div className="footer">© { new Date().getFullYear() } EmbedTest.com</div>
 					</div>
 				</div>

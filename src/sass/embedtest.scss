@@ -204,19 +204,16 @@ h4 {
 		}
 
 	}
-
-	.btn {
+	.btns {
 		margin-top: $padding;
-
-		&:last-child {
-			margin-left: $padding*0.5;
-			opacity: 0.5;
-
-			&:hover {
-				opacity: 1;
+		.btn,
+		.dropdown {
+			&:last-child {
+				margin-left: $padding*0.5;
 			}
 		}
 	}
+	
 
 	#embed {
 		border: 1px solid rgba($color-background-secondary, 0.35);
@@ -278,4 +275,36 @@ h4 {
 		margin-bottom: $padding;
 		border: 1px solid #f1f0f0;
 	}
+}
+
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+	.dropdown--content {
+		display: none;
+		position: absolute;
+		background-color: $background-light;
+		min-width: 170px;
+		z-index: 1;
+		text-align: left;
+
+		>div {
+			cursor: pointer;
+			padding: $padding*0.4 $padding*0.5;
+			color: $color-text;
+			display: block;
+
+			&:hover {
+				background-color: #eee;
+			}
+		}
+
+	}
+
+	&.active .dropdown--content {
+		display: block;
+	}
+
 }
