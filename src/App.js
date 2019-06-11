@@ -1,8 +1,6 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import brace from 'brace';
 import AceEditor from 'react-ace';
-import { Element, animateScroll } from 'react-scroll';
 import './sass/embedtest.scss';
 
 import 'brace/mode/html';
@@ -81,7 +79,7 @@ class App extends React.Component {
 								<div className="dropdown">
 									<div className="btn btn-alt dropbtn" onClick={this.toggleDropdown}>Examples <i className="fa fa-chevron-down" ></i></div>
 									<div className="dropdown--content">
-										<div onClick={this.exampleLink} data-code={'<iframe src="http://fractlstaging.com/tools/interactive-templates/interactive-embed-dynamic/" width="100%" height="300px" style="display:table;max-width:100%;margin:auto;width:800px;" frameBorder="0" scrolling="no"></iframe>'}>Simple Iframe</div>
+										<div onClick={this.exampleLink} data-code={'<iframe src="https://fractlstaging.com/tools/interactive-templates/interactive-embed-dynamic/" width="100%" height="300px" style="display:table;max-width:100%;margin:auto;width:800px;" frameBorder="0" scrolling="no"></iframe>'}>Simple Iframe</div>
 										<div onClick={this.exampleLink} data-code={'<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}>Youtube Video</div>
 									</div>
 								</div>
@@ -92,7 +90,20 @@ class App extends React.Component {
 				<div className="content">
 					<div className="container">
 						<div id="embed" className={this.state.embed!==null?'active':''} dangerouslySetInnerHTML={{ __html: this.state.embed }}></div>
-						<div className="footer">© { new Date().getFullYear() } EmbedTest.com</div>
+						
+						<div className="footer row">
+							<div className="col">
+								<div className="copyright">
+									© { new Date().getFullYear() } EmbedTest.com
+								</div>
+							</div>
+							<div className="col">
+								<div className="social-media">
+									<a href="https://twitter.com/embedtest_com" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://github.com/Szar/EmbedTest" target="_blank" rel="noopener noreferrer"><i className="fa fa-github-alt" aria-hidden="true"></i></a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -8,8 +8,7 @@
     "react-ace": "^7.0.1",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-scripts": "3.0.1",
-    "react-scroll": "^1.7.11"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

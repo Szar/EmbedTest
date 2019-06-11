@@ -10,7 +10,7 @@ body {
 body {
 	font-family: "Roboto", sans-serif;
 	color: $color-text;
-	background-color: $background-light;
+	background-color: $color-background-content;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.55em;
@@ -95,7 +95,13 @@ h4 {
 	}
 
 }
-
+.row {
+	display: flex;
+	align-items: center;
+	.col {
+		flex: 'flex-grow';
+	}
+}
 
 #embed-test {
 	text-align: center;
@@ -225,9 +231,8 @@ h4 {
 
 .content {
 	padding-top: $padding*2;
-	padding-bottom: $padding*0.5;
 	text-align: center;
-
+	color: $color-text;
 	h3 {
 		display: inline-block;
 		padding-bottom: $padding*0.2;
@@ -241,27 +246,47 @@ h4 {
 			font-size: 1rem;
 		}
 	}
+	
 
 	.footer {
 		margin-top: $padding*2;
-		font-size: 13px;
-		color: rgba($color-text, 0.5);
-	}
-
-	#examples {
-		.btn {
-
-			font-size: 0.75rem;
-			padding: $padding*0.2 $padding*0.3;
-			margin-left: $padding*0.25;
-			margin-right: $padding*0.25;
-			margin-bottom: $padding*0.25;
-
-			@media(max-width: 572px) {
-				font-size: 0.65rem;
+		border-top: 1px solid rgba($color-text, 0.1);
+		padding: $padding 0;
+		.col {
+			width: 100%;
+		}
+		.social-media {
+			text-align: right;
+			a {
+				position: relative;
+				margin-top: -4px;
+				text-align: center;
+				display: inline-block;
+				color: $color-background-content;
+				background-color: rgba($color-text, 0.175);
+				font-size: 1.05rem;
+				line-height: 1;
+				padding: 0.5rem 0.5rem;
+				border-radius: 3rem;
+				width: 32px;
+				height: 32px;
+				margin-left: $padding*0.25;
+				-webkit-transition: all $transition-time ease-in-out;
+				-moz-transition: all $transition-time ease-in-out;
+				-o-transition: all $transition-time ease-in-out;
+				transition: all $transition-time ease-in-out;
+				&:hover, :focus {
+					color: $color-background-content;
+					background-color: $color-primary;
+				}
 			}
 		}
-
+		.copyright {
+			text-align: left;
+			font-size: 12px;
+			color: rgba($color-text, 0.45);
+		}
+		
 	}
 }
 
@@ -285,7 +310,7 @@ h4 {
 	.dropdown--content {
 		display: none;
 		position: absolute;
-		background-color: $background-light;
+		background-color: $color-background-content;
 		min-width: 170px;
 		z-index: 1;
 		text-align: left;
@@ -308,3 +333,4 @@ h4 {
 	}
 
 }
+
