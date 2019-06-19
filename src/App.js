@@ -1,32 +1,24 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
 import AceEditor from 'react-ace';
-import './sass/embedtest.scss';
-
 import 'brace/mode/html';
-import 'brace/theme/xcode';
-
+import './sass/embedtest.scss';
 
 class App extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			embed: null
+			embed: null,
+			value: '',
 		}
-		this.value = ""
 		this.setEmbed = this.setEmbed.bind(this);
-		this.onChange = this.onChange.bind(this);
 		this.exampleLink = this.exampleLink.bind(this);
-	}
-	onChange(v) {
-		this.value = v
-		return true;
 	}
 
 	setEmbed(e=null,scrollup=false) {
-		if(this.value!=="") {
+		if(this.state.value!=="") {
 			this.setState({
-				embed: this.value
+				embed: this.state.value
 			})
 			setTimeout(function(){
 				window.scrollTo({
@@ -40,7 +32,7 @@ class App extends React.Component {
 	exampleLink(e){
 		var v = e.target.getAttribute('data-code')
 		e.preventDefault();
-		this.value = v
+		this.state.value = v
 		this.setEmbed(null,true);
 	}
 	toggleDropdown(e) {
@@ -56,26 +48,33 @@ class App extends React.Component {
 					<title>EmbedTest</title>
 					<meta name="description" content="Test embed codes" />
 					<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900|Source+Code+Pro:400,700,900" rel="stylesheet" />
-					<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 				</Helmet>
 				<div id="embed-test">
 					<div>
 						<div className="container">
 							<h1><span>&lt;</span> embedtest <span>/&gt;</span></h1>
-							<AceEditor
-								mode="html"
-								theme="xcode"
-								onChange={this.onChange}
-								name="editor"
-								editorProps={{$blockScrolling: true}}
-								maxLines={ 12 }
-								minLines={ 12 }
-								width="100%"
-								showPrintMargin={ false }
-								wrapEnabled={ true }
-								defaultValue=""
-								value={this.value}
-							/>
+							<div class="editor-wrapper">
+								<AceEditor
+									mode="html"
+									onChange={v => this.setState({ value: v })}
+									focus
+									name="editor"
+									maxLines={ 12 }
+									minLines={ 12 }
+									width="100%"
+									showPrintMargin={ false }
+									printMargin={ false }
+									wrapEnabled={ true }
+									showLineNumbers={ false }
+									autoScrollEditorIntoView={ false }
+									enableMultiselect={ false }
+									showGutter={ false }
+									useWorker={ true }
+									cursorStyle="wide"
+									value={this.state.value}
+								/>
+							</div>
+							
 							<div className="btns">
 								<div className="btn btn" id="go" onClick={this.setEmbed}>Test <i className="fa fa-magic"></i></div> 
 								<div className="dropdown">
