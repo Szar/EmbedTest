@@ -55,6 +55,8 @@ class App extends React.Component {
 					<meta name="robots" content="noindex,follow" />
 					<title>EmbedTest</title>
 					<meta name="description" content="Test embed codes" />
+					<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900|Source+Code+Pro:400,700,900" rel="stylesheet" />
+					<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 				</Helmet>
 				<div id="embed-test">
 					<div>
